@@ -1,0 +1,24 @@
+- hosts: webservers
+  become: yes
+  tasks:
+    - name: Install Apache and PHP
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - httpd
+        - php
+        - php-mysqlnd
+        - git
+
+    - name: Start Apache
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Deploy app code
+      git:
+        repo: 'https://github.com/<your-username>/aws-capstone-exam.git'
+        dest: /var/www/html
+        version: main
