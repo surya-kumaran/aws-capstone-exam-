@@ -19,6 +19,6 @@
 
     - name: Deploy app code
       git:
-        repo: 'https://github.com/<your-username>/aws-capstone-exam.git'
+        repo: 'https://github.com/surya-kumaran/aws-capstone-exam.git'
         dest: /var/www/html
         version: main
